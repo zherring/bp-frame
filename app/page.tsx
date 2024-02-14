@@ -18,7 +18,7 @@ type State = {
 // Todos
 // downloads 
 
-const basePath = process.env.NODE_ENV === "production" ? "https://basepaint-frame.vercel.app" : "";
+// const basePath = process.env.NODE_ENV === "production" ? "https://basepaint-frame.vercel.app" : "";
 const currentDate = new Date();
 const targetDate = new Date("2023-08-10");
 const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
@@ -96,7 +96,7 @@ export default async function Home({
         previousFrame={previousFrame}
       >
         
-        <FrameImage src={`${basePath}/processed_images/${state.current}.png`} />
+        <FrameImage src={`https://bp-frame.vercel.app/processed_images/${state.current}.png`} />
         <FrameImage src={"/processed_images/"+state.current+".png"} />
         <FrameButton onClick={dispatch}>
           Prev
