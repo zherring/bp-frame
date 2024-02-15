@@ -17,6 +17,7 @@ type State = {
 
 // Todos
 // downloads 
+// You have two <FrameImage /> components in your <FrameContainer /> component, and one is a relative URL, which won't work
 
 // const basePath = process.env.NODE_ENV === "production" ? "https://basepaint-frame.vercel.app" : "";
 const currentDate = new Date();
@@ -96,8 +97,7 @@ export default async function Home({
         previousFrame={previousFrame}
       >
         
-        <FrameImage src={`https://bp-frame.vercel.app/processed_images/${state.current}.png`} />
-        <FrameImage src={"/processed_images/"+state.current+".png"} />
+        <FrameImage src={`https://bp-frame.vercel.app/processed_images/${state.current}.png`} /> 
         <FrameButton onClick={dispatch}>
           Prev
         </FrameButton>
