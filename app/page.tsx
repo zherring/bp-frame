@@ -25,7 +25,6 @@ const targetDate = new Date("2023-08-10");
 const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
 
 const daysSinceTargetDate = Math.round(Math.abs((currentDate.getTime() - targetDate.getTime()) / oneDay));
-console.log(daysSinceTargetDate);
 
 const initialState = { current: daysSinceTargetDate };
 
@@ -37,7 +36,7 @@ const reducer: FrameReducer<State> = (state, action) => {
       // Decrement current by 1, ensuring it doesn't go below 0
       newCurrent = Math.max(1, state.current - 1);
     } else if (action.postBody?.untrustedData.buttonIndex === 2) {
-      // Increment current by 1, ensuring it doesn't exceed 182
+      // Increment current by 1, ensuring it doesn't exceed max days
       newCurrent = Math.min(daysSinceTargetDate, state.current + 1);
     }
 
@@ -98,6 +97,8 @@ export default async function Home({
       >
         
         <FrameImage src={`https://bp-frame.vercel.app/processed_images/${state.current}.png`} /> 
+
+        
         <FrameButton onClick={dispatch}>
           Prev
         </FrameButton>
